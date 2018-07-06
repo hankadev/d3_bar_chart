@@ -44,21 +44,37 @@
       .attr('transform', 'translate(' + padding + ',0)')
       .attr('fill', '#00f')
       .attr('data-date', (d, i) => dataset[i][0])
-      .attr('data-gdp', (d, i) => dataset[i][1]);
+      .attr('data-gdp', (d, i) => dataset[i][1])
+      .append('title')
+      .attr('id', 'tooltip')
+      .attr('data-date', (d, i) => dataset[i][0])
+      .text(d => showTooltip(d[0], d[1]));
+
+    function showTooltip(date, value) {
+      const year = date.substring(0,4);
+      const month = date.substring(5,7);
+      let quarter;
+      switch(month) {
+      case '01': quarter = 'Q1'; break;
+      case '04': quarter = 'Q2'; break;
+      case '07': quarter = 'Q3'; break;
+      case '10': quarter = 'Q4'; break;
+      }
+      const gdp = Math.round((value/1000) * 100) / 100;
+      return year + ' ' + quarter + '\n$ ' + gdp + ' Billions';
+    }
 
     // add axis to svg canvas
     const xAxis = d3.axisBottom(xScale);
     svg.append('g')
       .attr('id', 'x-axis')
       .attr('transform', 'translate(0,' + (h - padding) + ')')
-      .call(xAxis.ticks(15));
+      .call(xAxis);
 
     const yAxis = d3.axisLeft(yScale);
     svg.append('g')
       .attr('id', 'y-axis')
       .attr('transform', 'translate(' + padding + ',0)')
-      .call(yAxis.ticks(10));
-
-
+      .call(yAxis);
   });
 }());
