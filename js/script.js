@@ -6,11 +6,12 @@
   d3.json(url).then(function(data) {
     const dataset = data.data;
 
-    const w = 800;
+    const w = 900;
     const h = 500;
     const padding = 50;
-    //const barWidth = w / dataset.length;
+    const barWidth = (w - 2 * padding) / dataset.length;
 
+    // scale the data for the axes
     const dataYears = dataset.map(item => item[0].substring(0,4));
     const xScale =
       d3.scaleLinear()
@@ -23,11 +24,27 @@
         .domain([0, d3.max(dataGDP)])
         .range([h - padding, padding]);
 
+    // create svg element and append it to body
     const svg =
       d3.select('body')
         .append('svg')
         .attr('width', w)
         .attr('height', h);
+
+    // add bars to the graph
+    svg.selectAll('rect')
+      .data(dataset)
+      .enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', (d, i) => i * barWidth)
+      .attr('y', (d) => yScale(d[1]))
+      .attr('width', barWidth)
+      .attr('height', (d) => h - padding - yScale(d[1]))
+      .attr('transform', 'translate(' + padding + ',0)')
+      .attr('fill', '#00f')
+      .attr('data-date', (d, i) => dataset[i][0])
+      .attr('data-gdp', (d, i) => dataset[i][1]);
 
     // add axis to svg canvas
     const xAxis = d3.axisBottom(xScale);

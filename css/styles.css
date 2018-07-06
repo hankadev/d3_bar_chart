@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +7,16 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color: #e6f2ff;
+  font-family: 'Ubuntu Mono', monospace;
+  color: #00f;
 }
 
 main {
   width: 100%;
   text-align: center;
+}
+
+.bar:hover {
+  fill: #fff;
 }
