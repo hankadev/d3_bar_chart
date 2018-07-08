@@ -7,14 +7,18 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: #e6f2ff;
+  background-color: #888;
   font-family: 'Ubuntu Mono', monospace;
-  color: #00f;
+  color: #fff;
 }
 
 main {
   width: 100%;
   text-align: center;
+}
+
+svg {
+  background-color: #eee;
 }
 
 .bar:hover {
