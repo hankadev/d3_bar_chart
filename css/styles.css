@@ -24,3 +24,12 @@ svg {
 .bar:hover {
   fill: #fff;
 }
+
+#tooltip {
+  color: #fff;
+  background-color: #00f;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+}
