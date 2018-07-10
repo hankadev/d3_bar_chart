@@ -12,16 +12,16 @@
     const barWidth = (w - 2 * padding) / dataset.length;
 
     // scale the data for the axes
-    const dataYears = dataset.map(item => item[0].substring(0,4));
+    const minYear = d3.min(dataset, (d) => d[0].substring(0,4));
+    const maxYear = d3.max(dataset, (d) => d[0].substring(0,4));
     const xScale =
       d3.scaleLinear()
-        .domain([d3.min(dataYears), d3.max(dataYears)])
+        .domain([minYear, maxYear])
         .range([padding, w - padding]);
 
-    const dataGDP = dataset.map(item => item[1]);
     const yScale =
       d3.scaleLinear()
-        .domain([0, d3.max(dataGDP)])
+        .domain([0, d3.max(dataset, (d) => d[1])])
         .range([h - padding, padding]);
 
     // create svg element and append it to body
