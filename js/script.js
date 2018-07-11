@@ -24,6 +24,12 @@
         .domain([0, d3.max(dataset, (d) => d[1])])
         .range([h - padding, padding]);
 
+    // create canvas div for svg and tooltip
+    d3.select('body')
+      .append('div')
+      .attr('id', 'canvas')
+      .attr('width', w)
+      .attr('height', h);
     // create svg element and append it to body
     const svg =
       d3.select('#canvas')
@@ -54,8 +60,8 @@
       .on('mouseover', (d) => {
         tooltip.attr('data-date', d[0])
           .html(showTooltip(d[0], d[1]))
-          .style('top', h - 100 + 'px')
-          .style('left', w  / 2 + 'px')
+          .style('top',(d3.event.pageY - 80) + 'px')
+          .style('left', (d3.event.pageX) + 'px')
           .style('visibility', 'visible');
       })
       .on('mouseout', () => {
@@ -73,7 +79,7 @@
       case '10': quarter = 'Q4'; break;
       }
       const gdp = Math.round((value/1000) * 100) / 100;
-      return year + ' ' + quarter + '<br/> ' + gdp + ' Billions';
+      return year + ' ' + quarter + '<br/> ' + gdp + ' billions';
     }
 
     // add axis to svg canvas

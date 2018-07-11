@@ -26,8 +26,10 @@ svg {
 }
 
 #tooltip {
-  color: #fff;
-  background-color: #00f;
+  visibility: hidden;
+  font-weight: bold;
+  color: #00f;
+  background-color: #99e6ff;
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
