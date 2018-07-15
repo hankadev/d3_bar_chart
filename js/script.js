@@ -95,11 +95,10 @@
       .call(yAxis);
     svg.append('text')
       .attr('id', 'text')
-      //.attr('transform', 'rotate(-90)')
       .attr('y', 10)
       .attr('x', 10)
       .attr('dy', '1em')
       .style('text-anchor', 'start')
-      .text('GDP in billions of USD');
+      .text('GDP in billions USD');
   });
 }());
