@@ -19,6 +19,7 @@ main {
 
 svg {
   background-color: #eee;
+  color: #000;
 }
 
 .bar:hover {
