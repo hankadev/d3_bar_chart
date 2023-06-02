@@ -1,7 +1,7 @@
 # Visualize Data with a Bar Chart
 This is my implementation of [Free Code Camp's](https://www.freecodecamp.org/) Visualize Data with a Bar Chart project.
 
-[view in browser](https://hanny21.github.io/d3_bar_chart/)
+[view in browser](https://hankadev.github.io/d3_bar_chart/)
 
 ## Objective
 Built an app that is functionally similar to [this](https://codepen.io/freeCodeCamp/full/GrZVaM/).
